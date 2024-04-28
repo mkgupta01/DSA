@@ -9,10 +9,12 @@ class Solution {
                 set.add(s.charAt(j));
                  j++;
             }else{
-                while(set.contains(s.charAt(j))){
-                    set.remove(s.charAt(i));
+                set.remove(s.charAt(i));
                     i++;
-                }
+                // while(set.contains(s.charAt(j))){
+                //     set.remove(s.charAt(i));
+                //     i++;
+                // }
             }
             ans = Math.max(ans, j-i);   
         }
