@@ -15,11 +15,11 @@
  */
 class Solution {
     public int maxDepth(TreeNode root) {
-        return helper(root)-1;
+        return helper(root);
     }
     static int helper(TreeNode root){
         if(root == null){
-            return 1;
+            return 0;
         }
 
         int left = helper(root.left);
