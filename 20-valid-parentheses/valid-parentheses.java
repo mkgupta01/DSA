@@ -3,27 +3,24 @@ class Solution {
         if(s.length()%2 != 0){
             return false;
         }
-        
-        StringBuilder sr = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
+       
         for(int i=0;i<s.length();i++){
-            char first=s.charAt(i);
-            if(first == '(' || first == '{' || first == '['){
-                sr.append(first);
+            char ch = s.charAt(i);
+            if(ch == '[' || ch == '{' || ch == '('){
+                stack.push(ch);
             }else{
-                if(sr.length() == 0){
+                if(stack.isEmpty()){
                     return false;
                 }
-                char last = sr.charAt(sr.length()-1);
-                if(first - last == 1 || first - last == 2){
-                    sr.deleteCharAt(sr.length()-1);
+                char pop = stack.peek();
+                if(ch - pop == 1 || ch - pop == 2){
+                    stack.pop();
                 }else{
                     return false;
                 }
             }
         }
-        if(sr.length() != 0){
-            return false;
-        }
-        return true;
+        return stack.isEmpty();
     }
 }
